@@ -1,8 +1,4 @@
-Revision history for Perl extension PDL::HDF
-0.01  13/02/01
-	- original version
-
-2.0    27 March 2006 (Judd Taylor, judd@marine.usf.edu)
+2.0 2006-03-27
     
     - New version I've taken over from the previous authors.
     
@@ -70,7 +66,6 @@ Revision history for Perl extension PDL::HDF
         use outputs from earlier tests).
     
     - I added tests for the SDS chunking features.
-    
-    
-    
-    
+
+0.01  13/02/01
+    - original version
