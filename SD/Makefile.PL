@@ -12,7 +12,7 @@ $pkg->add_pm(
 );
 
 undef &MY::postamble; # suppress warning
-*MY::postamble = sub { pdlpp_postamble_int($package); };
+*MY::postamble = sub { pdlpp_postamble($package); };
 
 WriteMakefile(
     NAME => 'PDL::IO::HDF::SD',

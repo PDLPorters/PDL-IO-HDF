@@ -6,7 +6,7 @@ use Config;
 my $package = [ qw(VS.pd VS PDL::IO::HDF::VS) ];
 
 undef &MY::postamble; # suppress warning
-*MY::postamble = sub { pdlpp_postamble_int($package); };
+*MY::postamble = sub { pdlpp_postamble($package); };
 
 my $pkg = ExtUtils::Depends->new(qw(PDL::IO::HDF::VS Alien::HDF4));
 $pkg->set_inc(&PDL_INCLUDE());

@@ -1,24 +1,26 @@
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
-
-# Make sure everything we wanted is found:
-if (!eval { require ExtUtils::Depends; ExtUtils::Depends->new(qw(PDL::IO::HDF Alien::HDF4)) }) {
-    my $msg = "Error loading Alien::HDF4: '$@'\n";
-    $msg .= "Skipping build of PDL::IO::HDF.\n";
-    write_dummy_make( $msg );
-    return;
-}
+use PDL::Core::Dev;
+require ExtUtils::Depends;
+require File::Spec::Functions;
 
 WriteMakefile(
-    NAME => 'PDL::IO::HDF',
-    VERSION_FROM => 'HDF.pm',
-    PM => {
-        'HDF.pm' => '$(INST_LIBDIR)/HDF.pm',
-    },
-    dist => {
-        COMPRESS => 'gzip',
-        SUFFIX => 'gz',
-    },
-    NO_MYMETA => 1,
+  NAME => 'PDL::IO::HDF',
+  AUTHOR => 'PerlDL Developers <pdl-general@lists.sourceforge.net>',
+  VERSION_FROM => 'HDF.pm',
+  CONFIGURE_REQUIRES => {
+    'ExtUtils::MakeMaker' => 0,
+    'PDL' => '2.094',
+    'ExtUtils::Depends' => '0.402',
+    'Alien::HDF4' => 0,
+  },
+  PREREQ_PM => {
+    'PDL' => '2.094',
+  },
+  TEST_REQUIRES => {
+    'Test::More' => '0.88',
+  },
+  PM => { 'HDF.pm' => '$(INST_LIBDIR)/HDF.pm' },
+  dist => { COMPRESS => 'gzip', SUFFIX => 'gz' },
 );
