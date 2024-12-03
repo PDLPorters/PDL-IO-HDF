@@ -1,0 +1,8 @@
+SD/SD.pm
+SD/SD.xs
+SD/SD.c
+VS/VS.pm
+VS/VS.xs
+VS/VS.c
+*.o
+*.bs
