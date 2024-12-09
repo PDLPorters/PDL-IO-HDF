@@ -5,8 +5,11 @@ use PDL::Core::Dev;
 require ExtUtils::Depends;
 require File::Spec::Functions;
 
+my $package_name = 'PDL::IO::HDF';
+(my $repo = $package_name) =~ s#::#-#g;
+$repo = "PDLPorters/$repo";
 WriteMakefile(
-  NAME => 'PDL::IO::HDF',
+  NAME => $package_name,
   AUTHOR => 'PerlDL Developers <pdl-general@lists.sourceforge.net>',
   VERSION_FROM => 'HDF.pm',
   CONFIGURE_REQUIRES => {
@@ -23,4 +26,17 @@ WriteMakefile(
   },
   PM => { 'HDF.pm' => '$(INST_LIBDIR)/HDF.pm' },
   dist => { COMPRESS => 'gzip', SUFFIX => 'gz' },
+  META_MERGE => {
+    "meta-spec" => { version => 2 },
+    resources => {
+      homepage => 'http://pdl.perl.org/',
+      bugtracker  => {web=>"https://github.com/$repo/issues"},
+      repository  => {
+        url => "git://github.com/$repo.git",
+        type => 'git',
+        web => "https://github.com/$repo",
+      },
+      x_IRC => 'irc://irc.perl.org/#pdl',
+    },
+  },
 );
