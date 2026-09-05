@@ -198,13 +198,13 @@ SV *
 _Vgetname(vgroup_id);
                 int vgroup_id
         CODE:
-                uint16 len;
 #if LIBVER_MAJOR == 4 && LIBVER_MINOR >= 4
                 char vgroup_name[VGNAMELENMAX];
                 size_t buf_size = sizeof(vgroup_name);
                 Vgetname(vgroup_id,vgroup_name,&buf_size);
                 RETVAL = newSVpvn(vgroup_name,buf_size);
 #else
+                uint16 len;
                 if (Vgetnamelen(vgroup_id, &len)) croak("Failed to get Vgetnamelen for ID=%d", vgroup_id);
                 char vgroup_name[len+1];
                 Vgetname(vgroup_id,vgroup_name);
